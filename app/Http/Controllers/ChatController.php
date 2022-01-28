@@ -80,5 +80,6 @@ class ChatController extends Controller
     public function destroy($id)
     {
         //
+        return view('chat/index')
     }
 }
