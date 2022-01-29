@@ -22,9 +22,9 @@ gem
         <h1 class="my-4 text-3xl font-bold">{{env('APP_NAME')}}</h1>
         <div class="my-4 p-4 rounded-lg bg-blue-200">
             <ul>
-                <li class="truncate">2021-11-03 23:03:56　＠Guest　Hello World !</li>
-                <li class="truncate">2021-11-03 23:03:56　＠Guest　Hello World !</li>
-                <li class="truncate">2021-11-03 23:03:56　＠Guest　Hello World !</li>
+                @foreach ($chats as $chat)
+                    <li class="truncate">{{$chat->getData()}}</li>
+                @endforeach
             </ul>
         </div>
         <form class="my-4 py-2 px-4 rounded-lg bg-gray-300 text-sm flex flex-col md:flex-row flex-grow" action="/chat" method="POST">
