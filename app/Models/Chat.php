@@ -12,6 +12,6 @@ class Chat extends Model
 
     public function scopeGetData($query)
     {
-        return $this->created_at . '　@' . $this->user_name . '　' . $this->message;
+        return $this->created_at . '@' . $this->user_name . '' . $this->message;
     }
 }
