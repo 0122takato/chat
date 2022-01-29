@@ -13,8 +13,15 @@ class ChatController extends Controller
      */
     public function index()
     {
-        //
+        // データーベースの件数を取得
+        $length = Chat::all()->count();
+
+        // 表示する件数を代入
+        $display = 5;
+
+        $chats = Chat::offset($length-$display)->limit($display)->get();
         return view('chat/index');
+        return view('chat/index',compact('chats'));
     }
 
     /**
