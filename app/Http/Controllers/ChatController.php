@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Chat;
 
 class ChatController extends Controller
 {
@@ -21,6 +22,7 @@ class ChatController extends Controller
 
         $chats = Chat::offset($length-$display)->limit($display)->get();
         return view('chat/index',compact('chats'));
+        // return view('chat/index');
     }
 
     /**
