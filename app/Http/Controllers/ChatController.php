@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Chat;
 use Illuminate\Support\Str;
+use App\Models\Chat;
 
 class ChatController extends Controller
 {
@@ -15,21 +15,24 @@ class ChatController extends Controller
      */
     public function index(Request $request)
     {
-        // ユーザーIDをセッションに登録
-        $user_identifier = $request->session()->get('user_identifier', Str::random(20));
-        session(['user_identifier' => $user_identifier]);
+
+        // ユーザー識別子がなければランダムに生成してセッションに登録
+        if($request->session()->missing('user_identifier')){ session(['user_identifier' => Str::random(20)]); }
 
         // ユーザー名を変数に登録（デフォルト値：Guest）
-        $user_name = $request->session()->get('user_name', 'Guest');
-
+        if($request->session()->missing('user_name')){ session(['user_name' => 'Guest']); }
+        
         // データーベースの件数を取得
         $length = Chat::all()->count();
 
-        // 表示する件数を代入
+        // 画面に表示する件数を代入
         $display = 5;
 
+        // 最新のチャットを画面に表示する分だけ取得して変数に代入
         $chats = Chat::offset($length-$display)->limit($display)->get();
-        return view('chat/index',compact('chats', 'user_identifier', 'user_name'));
+
+        // チャットデータをビューに渡して表示
+        return view('chat/index',compact('chats'));
     }
 
     /**
@@ -50,12 +53,15 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        // ユーザー名をフォームから取得してセッションに登録
+        // フォームに入力されたユーザー名をセッションに登録
         session(['user_name' => $request->user_name]);
 
+        // フォームに入力されたチャットデータをデータベースに登録
         $chat = new Chat;
         $form = $request->all();
         $chat->fill($form)->save();
+
+        // 最初の画面にリダイレクト
         return redirect('/chat');
     }
 

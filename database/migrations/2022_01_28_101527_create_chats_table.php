@@ -14,8 +14,6 @@ class CreateChatsTable extends Migration
     public function up()
     {
         Schema::create('chats', function (Blueprint $table) {
-            // $table->id();
-            // $table->timestamps();
             $table->bigIncrements('id');
             $table->string('user_name', 20)->default('noname');
             $table->string('user_identifier', 20);
