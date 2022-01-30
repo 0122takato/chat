@@ -50,6 +50,9 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
+        // ユーザー名をフォームから取得してセッションに登録
+        session(['user_name' => $request->user_name]);
+
         $chat = new Chat;
         $form = $request->all();
         $chat->fill($form)->save();
