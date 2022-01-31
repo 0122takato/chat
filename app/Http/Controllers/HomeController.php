@@ -29,6 +29,9 @@ class HomeController extends Controller
         return view('home', ['comments' => $comments]);
     }
 
+    /**
+     * 送信するときの関数
+     */
     public function add(Request $request)
     {
         $user = Auth::user();
@@ -39,5 +42,15 @@ class HomeController extends Controller
             'comment' => $comment
         ]);
         return redirect()->route('home');
+    }
+
+    /**
+     * jsonデータを返す関数
+     */
+    public function getData()
+    {
+        $comments = Comment::orderBy('created_at', 'desc')->get();
+        $json = ["comments" => $comments];
+        return response()->json($json);
     }
 }
