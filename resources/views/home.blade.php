@@ -6,7 +6,22 @@
         <div class="card">
             <div class="card-header">Comment</div>
             <div class="card-body chat-card">
-
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
+                @include('components.comment')
             </div>
         </div>
     </div>
