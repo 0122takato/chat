@@ -6,22 +6,9 @@
         <div class="card">
             <div class="card-header">Comment</div>
             <div class="card-body chat-card">
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
-                @include('components.comment')
+                @foreach ($comments as $item)
+                @include('components.comment', ['item' => $item])
+                @endforeach
             </div>
         </div>
     </div>
