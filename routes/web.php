@@ -31,3 +31,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/add', [App\Http\Controllers\HomeController::class, 'add'])->name('add');
+
+Route::get('/result/ajax', [App\Http\Controllers\HomeController::class, 'getData'])->name('getData');
