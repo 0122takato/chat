@@ -15,6 +15,9 @@ class AddColumnDistinctionToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            Schema::table('users', function (Blueprint $table) {
+                $table->string('distinction')->comment('事務所かユーザーか');
+            });
         });
     }
 
@@ -27,6 +30,9 @@ class AddColumnDistinctionToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            Schema::table('users', function (Blueprint $table) {
+                $table->dropColumn('distinction');
+            });
         });
     }
 }
