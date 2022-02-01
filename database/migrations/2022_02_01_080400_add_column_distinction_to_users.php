@@ -16,7 +16,7 @@ class AddColumnDistinctionToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             Schema::table('users', function (Blueprint $table) {
-                $table->string('distinction')->comment('事務所かユーザーか');
+                $table->string('distinction')->nullable();
             });
         });
     }
