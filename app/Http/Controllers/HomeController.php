@@ -49,7 +49,7 @@ class HomeController extends Controller
      */
     public function getData()
     {
-        $comments = Comment::orderBy('created_at', 'asc')->get();
+        $comments = Comment::orderBy('created_at', 'desc')->get();
         $json = ["comments" => $comments];
         return response()->json($json);
     }
